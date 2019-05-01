@@ -1,0 +1,19 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> import requests
+>>> BASE_URL = 'https://api.telegram.org/bot727281713:AAFeNruJlHcYEo_Hdb3yOrvAyNtHfFhmDvE/'
+>>> r = requests.get(f'{BASE_URL}getMe')
+>>> r
+<Response [200]>
+>>> r.json()
+{'ok': True, 'result': {'id': 727281713, 'is_bot': True, 'first_name': 'English_S', 'username': 'English_SBot'}}
+>>> r = requests.get(f'{BASE_URL}getUpdates')
+>>> r.json()
+{'ok': True, 'result': [{'update_id': 21406651, 'message': {'message_id': 3, 'from': {'id': 461367829, 'is_bot': False, 'first_name': 'Diller', 'last_name': 'Dvondy', 'username': 'DillerDvondy', 'language_code': 'ru'}, 'chat': {'id': 461367829, 'first_name': 'Diller', 'last_name': 'Dvondy', 'username': 'DillerDvondy', 'type': 'private'}, 'date': 1556708961, 'text': '/start', 'entities': [{'offset': 0, 'length': 6, 'type': 'bot_command'}]}}, {'update_id': 21406652, 'message': {'message_id': 4, 'from': {'id': 461367829, 'is_bot': False, 'first_name': 'Diller', 'last_name': 'Dvondy', 'username': 'DillerDvondy', 'language_code': 'ru'}, 'chat': {'id': 461367829, 'first_name': 'Diller', 'last_name': 'Dvondy', 'username': 'DillerDvondy', 'type': 'private'}, 'date': 1556711138, 'text': 'Konor and Mg'}}]}
+>>> payload = {}
+>>> payload['chat_id'] = 461367829
+>>> payload['text'] = 'Habib won'
+>>> r = requests.post(f'{BASE_URL}sendMessage', data = payload)
+>>> r.json()
+{'ok': True, 'result': {'message_id': 6, 'from': {'id': 727281713, 'is_bot': True, 'first_name': 'English_S', 'username': 'English_SBot'}, 'chat': {'id': 461367829, 'first_name': 'Diller', 'last_name': 'Dvondy', 'username': 'DillerDvondy', 'type': 'private'}, 'date': 1556713531, 'text': 'Habib won'}}
+>>> 
