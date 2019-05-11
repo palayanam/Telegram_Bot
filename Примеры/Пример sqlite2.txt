@@ -1,0 +1,53 @@
+Microsoft Windows [Version 10.0.17763.475]
+(c) Корпорация Майкрософт (Microsoft Corporation), 2018. Все права защищены.
+
+C:\Users\User>cd C:\Users\User\Documents\GitHub\Telegram_Bot
+
+C:\Users\User\Documents\GitHub\Telegram_Bot>chcp 1251
+Текущая кодовая страница: 1251
+
+C:\Users\User\Documents\GitHub\Telegram_Bot>chcp
+Текущая кодовая страница: 1251
+
+C:\Users\User\Documents\GitHub\Telegram_Bot>sqlite3.exe testdb.db
+SQLite version 3.28.0 2019-04-16 19:49:53
+Enter ".help" for usage hints.
+sqlite> SELECT sqlite_version();
+3.28.0
+sqlite> .exit
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+C:\Users\User\Documents\GitHub\Telegram_Bot>sqlite3.exe testdb.db
+SQLite version 3.28.0 2019-04-16 19:49:53
+Enter ".help" for usage hints.
+sqlite> CREATE TEMP TABLE tmp1 (pole1)
+   ...> ;
+sqlite> CREATE TEMPORARY TABLE tmp2 (pole1);
+sqlite> .tables
+temp.tmp1  temp.tmp2
+sqlite> PRAGMA table_info(tmp1);
+0|pole1||0||0
+sqlite> DROP TABLE tmp2
+   ...> ;
+sqlite> .table;
+Error: unknown command or invalid arguments:  "table;". Enter ".help" for help
+sqlite> .table
+temp.tmp1
+sqlite> CREATE TEMP TABLE tmp2 (p1 INTEGER, p2 INTEGER, p3 INTEGER, p4 INTEGER);
+sqlite> INSERT INTO tmp3 VALUES (10, "00547", 5.45, "СТРОКА");
+Error: no such table: tmp3
+sqlite> INSERT INTO tmp2 VALUES (10, "00547", 5.45, "СТРОКА");
+sqlite> SELECT * FROM tmp2;
+10|547|5.45|СТРОКА
+sqlite> SELECT typeof(p1), typeof(p2), typeof(p3), typeof(p4);
+Error: no such column: p1
+sqlite> SELECT typeof(p1), typeof(p2), typeof(p3), typeof(p4) FROM tmp2;
+integer|integer|real|text
+sqlite> DROP TABLE tmp2;
+sqlite> .EXIT
+Error: unknown command or invalid arguments:  "EXIT". Enter ".help" for help
+sqlite> .exit
+
+C:\Users\User\Documents\GitHub\Telegram_Bot>

@@ -1,0 +1,19 @@
+Microsoft Windows [Version 10.0.17763.475]
+(c) Корпорация Майкрософт (Microsoft Corporation), 2018. Все права защищены.
+
+C:\Users\User>cd C:\Users\User\Documents\GitHub\Telegram_Bot
+
+C:\Users\User\Documents\GitHub\Telegram_Bot>chcp 1251
+Текущая кодовая страница: 1251
+
+C:\Users\User\Documents\GitHub\Telegram_Bot>chcp
+Текущая кодовая страница: 1251
+
+C:\Users\User\Documents\GitHub\Telegram_Bot>sqlite3.exe testdb.db
+SQLite version 3.28.0 2019-04-16 19:49:53
+Enter ".help" for usage hints.
+sqlite> SELECT sqlite_version();
+3.28.0
+sqlite> .exit
+
+C:\Users\User\Documents\GitHub\Telegram_Bot>
