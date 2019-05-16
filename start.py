@@ -14,9 +14,9 @@ r = requests.get(f'{BASE_URL}getUpdates') #Запрос на получение 
 
 payload = {} #Создание словаря ответа к юзеру
 
-payload['chat_id'] = 461367829 #ID чата
+payload['chat_id'] = 461367829 #ID чата(Кожного разу різний для користувача)
 
-payload['text'] = 'Habib won' #Текст сообщения
+payload['text'] = 'Hello, I am English Bot!' #Текст сообщения
 
 r = requests.post(f'{BASE_URL}sendMessage', data = payload) #Запрос на ответ от бота
 
