@@ -1,0 +1,71 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> import requests
+>>> BASE_URL = 'https://api.telegram.org/bot727281713:AAFeNruJlHcYEo_Hdb3yOrvAyNtHfFhmDvE/'
+>>> r = requests.get(f'{BASE_URL}getMe')
+>>> r.json()
+{'ok': True, 'result': {'id': 727281713, 'is_bot': True, 'first_name': 'English_S', 'username': 'English_SBot'}}
+>>> r = requests.get(f'{BASE_URL}getUpdates')
+>>> r.json()
+{'ok': True, 'result': []}
+>>> r.json()
+{'ok': True, 'result': []}
+>>> r = requests.get(f'{BASE_URL}getUpdates')
+
+>>> r.json
+<bound method Response.json of <Response [200]>>
+>>> r.json()
+{'ok': True, 'result': [{'update_id': 21406661, 'message': {'message_id': 17, 'from': {'id': 461367829, 'is_bot': False, 'first_name': 'Diller', 'last_name': 'Dvondy', 'username': 'DillerDvondy', 'language_code': 'ru'}, 'chat': {'id': 461367829, 'first_name': 'Diller', 'last_name': 'Dvondy', 'username': 'DillerDvondy', 'type': 'private'}, 'date': 1558010692, 'text': 'Hello world 16.05.2019!'}}]}
+>>> payload = {}
+>>> payload[chat_id] = '21406661'
+Traceback (most recent call last):
+  File "<pyshell#11>", line 1, in <module>
+    payload[chat_id] = '21406661'
+NameError: name 'chat_id' is not defined
+>>> payload['chat_id'] = 21406661
+>>> payload['text'] = "Hello, I am English Bot!"
+>>> r = requests.post(f'{BASE_URL}sendMessage', data = payload)
+>>> r.json()
+{'ok': False, 'error_code': 400, 'description': 'Bad Request: chat not found'}
+>>> payload['chat_id'] = 461367829
+>>> r = requests.post(f'{BASE_URL}sendMessage', data = payload)
+>>> r.json()
+{'ok': True, 'result': {'message_id': 18, 'from': {'id': 727281713, 'is_bot': True, 'first_name': 'English_S', 'username': 'English_SBot'}, 'chat': {'id': 461367829, 'first_name': 'Diller', 'last_name': 'Dvondy', 'username': 'DillerDvondy', 'type': 'private'}, 'date': 1558011002, 'text': 'Hello, I am English Bot!'}}
+>>> payload['text'] = 'https://core.telegram.org/bots/api#sendmessage'
+>>> r = requests.post(f'{BASE_URL}sendMessage', data = payload)
+>>> r.json()
+{'ok': True, 'result': {'message_id': 19, 'from': {'id': 727281713, 'is_bot': True, 'first_name': 'English_S', 'username': 'English_SBot'}, 'chat': {'id': 461367829, 'first_name': 'Diller', 'last_name': 'Dvondy', 'username': 'DillerDvondy', 'type': 'private'}, 'date': 1558011650, 'text': 'https://core.telegram.org/bots/api#sendmessage', 'entities': [{'offset': 0, 'length': 46, 'type': 'url'}]}}
+>>> payload['disable_web_page_preview'] = true
+Traceback (most recent call last):
+  File "<pyshell#22>", line 1, in <module>
+    payload['disable_web_page_preview'] = true
+NameError: name 'true' is not defined
+>>> payload['disable_web_page_preview'] = 'true'
+>>> r = requests.post(f'{BASE_URL}sendMessage', data = payload)
+>>> photo{}
+SyntaxError: invalid syntax
+>>> photo = {}
+>>> photo['chat_id'] = 461367829
+>>> photo['photo'] = 'https://cdn.eventfinda.co.nz/uploads/events/transformed/1201128-536505-34.jpg?v=4'
+>>> r = requests.post(f'{BASE_URL}sendPhoto', data = photo)
+>>> photo['caption'] = 'Learn English!'
+>>> r = requests.post(f'{BASE_URL}sendPhoto', data = photo)
+>>> r = requests.post(f'{BASE_URL}%.', data = photo) % (sendPhoto)
+Traceback (most recent call last):
+  File "<pyshell#32>", line 1, in <module>
+    r = requests.post(f'{BASE_URL}%.', data = photo) % (sendPhoto)
+NameError: name 'sendPhoto' is not defined
+>>> r = requests.post(f'{BASE_URL}%.', data = photo) % ('sendPhoto')
+Traceback (most recent call last):
+  File "<pyshell#33>", line 1, in <module>
+    r = requests.post(f'{BASE_URL}%.', data = photo) % ('sendPhoto')
+TypeError: unsupported operand type(s) for %: 'Response' and 'str'
+>>> r = requests.post(f'{BASE_URL}sendPhoto', data = photo)
+>>> r = requests.get(f'{BASE_URL}getUpdates')
+>>> r.json()
+{'ok': True, 'result': [{'update_id': 21406661, 'message': {'message_id': 17, 'from': {'id': 461367829, 'is_bot': False, 'first_name': 'Diller', 'last_name': 'Dvondy', 'username': 'DillerDvondy', 'language_code': 'ru'}, 'chat': {'id': 461367829, 'first_name': 'Diller', 'last_name': 'Dvondy', 'username': 'DillerDvondy', 'type': 'private'}, 'date': 1558010692, 'text': 'Hello world 16.05.2019!'}}, {'update_id': 21406662, 'message': {'message_id': 24, 'from': {'id': 413825490, 'is_bot': False, 'first_name': 'Polina', 'last_name': 'Nemylostyva', 'language_code': 'ru'}, 'chat': {'id': 413825490, 'first_name': 'Polina', 'last_name': 'Nemylostyva', 'type': 'private'}, 'date': 1558012874, 'text': 'Hvyxych vu'}}]}
+>>> payload['chat_id'] = 413825490
+>>> r = requests.post(f'{BASE_URL}sendMessage', data = payload)
+>>> photo['chat_id'] = 413825490
+>>> r = requests.post(f'{BASE_URL}sendPhoto', data = photo)
+>>> 
